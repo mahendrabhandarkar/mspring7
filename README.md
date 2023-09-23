@@ -10,3 +10,5 @@ Perl Modules Installation without Internet Connection:--- https://www.ibm.com/do
 | 
 Gson gson = new GsonBuilder().serializeNulls().create();
 https://github.com/admirhodzic/multiselect-dropdown
+jspdf
+RichText 
