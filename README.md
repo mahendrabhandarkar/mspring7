@@ -8,9 +8,9 @@ Perl Modules Installation without Internet Connection:--- https://www.ibm.com/do
 | Validation | https://jqueryvalidation.org/ | |
 | Steps | http://www.jquery-steps.com/ | |
 | 
-Gson gson = new GsonBuilder().serializeNulls().create();
-https://github.com/admirhodzic/multiselect-dropdown
-jspdf - https://artskydj.github.io/jsPDF/docs/jsPDF.html [https://pdfclown.org/ , iText]
-RichText - TinyMCE https://github.com/tinymce/tinymce
-DataTable Plugins - https://datatables.net/plug-ins/i18n/
+Gson gson = new GsonBuilder().serializeNulls().create(); <br />
+https://github.com/admirhodzic/multiselect-dropdown <br />
+jspdf - https://artskydj.github.io/jsPDF/docs/jsPDF.html [https://pdfclown.org/ , iText] <br />
+RichText - TinyMCE https://github.com/tinymce/tinymce <br />
+DataTable Plugins - https://datatables.net/plug-ins/i18n/ <br />
 
