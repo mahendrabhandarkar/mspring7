@@ -6,8 +6,13 @@ Perl Modules Installation without Internet Connection:--- https://www.ibm.com/do
 | Concept Called  | Library  | Description |
 | :------------ |:---------------:| -----:|
 | Validation | https://jqueryvalidation.org/ | |
-| Steps | http://www.jquery-steps.com/ | |
-| 
+| jQuery Steps | http://www.jquery-steps.com/ | |
+| sweet alert | https://sweetalert.js.org/guides/ | |
+| Bootstrap Multiselect | |
+| jsPDF |  |
+| gitlab restore backup | |
+| postgres or mongodb database restore | |
+
 Gson gson = new GsonBuilder().serializeNulls().create(); <br />
 https://github.com/admirhodzic/multiselect-dropdown <br />
 jspdf - https://artskydj.github.io/jsPDF/docs/jsPDF.html [https://pdfclown.org/ , iText] <br />
