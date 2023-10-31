@@ -35,3 +35,6 @@ https://getbootstrap.com/docs/5.3/components/card/
 https://www.w3schools.com/bootstrap5/
 https://datatables.net/plug-ins/i18n/Hindi.html
 Pluralsight -- Courses Free --- Yearly ----
+https://www.npmjs.com/package/tabletojson - Convert HTML table input fields content to JSON.
+
+
