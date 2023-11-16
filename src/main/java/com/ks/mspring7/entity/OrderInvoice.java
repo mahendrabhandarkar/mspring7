@@ -7,12 +7,13 @@ import jakarta.persistence.Transient;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Getter
 @Setter
-public class OrderInvoice {
+public class OrderInvoice  implements Serializable {
 
    @Id
    @GeneratedValue

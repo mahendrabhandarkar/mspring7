@@ -70,15 +70,14 @@ class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapter<Orde
 			   log.info("This PAID handler where we can perform some logging");
 		   });
 	}
-	
 	@Bean
 	public Guard<OrderStates, OrderEvents> guard() {
 	   return ctx -> true;
 	}
-
+/*
 	@Bean
 	public Action<OrderStates, OrderEvents> guard() {
 		return ctx -> log.info("logging");
 	}
-
+*/
 }
