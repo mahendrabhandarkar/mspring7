@@ -31,6 +31,22 @@ public class AuthenticationService {
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
 
+  /**
+   * Returns an Image object that can then be painted on the screen.
+   * The url argument must specify an absolute <a href="#{@link}">{@link URL}</a>. The name
+   * argument is a specifier that is relative to the url argument.
+   * <p>
+   * This method always returns immediately, whether or not the
+   * image exists. When this applet attempts to draw the image on
+   * the screen, the data will be loaded. The graphics primitives
+   * that draw the image will incrementally paint on the screen.
+   *
+   * @param  url  an absolute URL giving the base location of the image
+   * @param  name the location of the image, relative to the url argument
+   * @return      the image at the specified URL
+   * @see         Image
+   */
+
   public AuthenticationResponse register(RegisterRequest request) {
     var user = User.builder()
         .firstname(request.getFirstname())
@@ -48,6 +64,22 @@ public class AuthenticationService {
             .refreshToken(refreshToken)
         .build();
   }
+
+  /**
+   * Returns an Image object that can then be painted on the screen.
+   * The url argument must specify an absolute <a href="#{@link}">{@link URL}</a>. The name
+   * argument is a specifier that is relative to the url argument.
+   * <p>
+   * This method always returns immediately, whether or not the
+   * image exists. When this applet attempts to draw the image on
+   * the screen, the data will be loaded. The graphics primitives
+   * that draw the image will incrementally paint on the screen.
+   *
+   * @param  url  an absolute URL giving the base location of the image
+   * @param  name the location of the image, relative to the url argument
+   * @return      the image at the specified URL
+   * @see         Image
+   */
 
   public AuthenticationResponse authenticate(AuthenticationRequest request) {
     authenticationManager.authenticate(
@@ -68,6 +100,22 @@ public class AuthenticationService {
         .build();
   }
 
+  /**
+   * Returns an Image object that can then be painted on the screen.
+   * The url argument must specify an absolute <a href="#{@link}">{@link URL}</a>. The name
+   * argument is a specifier that is relative to the url argument.
+   * <p>
+   * This method always returns immediately, whether or not the
+   * image exists. When this applet attempts to draw the image on
+   * the screen, the data will be loaded. The graphics primitives
+   * that draw the image will incrementally paint on the screen.
+   *
+   * @param  url  an absolute URL giving the base location of the image
+   * @param  name the location of the image, relative to the url argument
+   * @return      the image at the specified URL
+   * @see         Image
+   */
+
   private void saveUserToken(User user, String jwtToken) {
     var token = Token.builder()
         .user(user)
@@ -79,6 +127,22 @@ public class AuthenticationService {
     tokenRepository.save(token);
   }
 
+  /**
+   * Returns an Image object that can then be painted on the screen.
+   * The url argument must specify an absolute <a href="#{@link}">{@link URL}</a>. The name
+   * argument is a specifier that is relative to the url argument.
+   * <p>
+   * This method always returns immediately, whether or not the
+   * image exists. When this applet attempts to draw the image on
+   * the screen, the data will be loaded. The graphics primitives
+   * that draw the image will incrementally paint on the screen.
+   *
+   * @param  url  an absolute URL giving the base location of the image
+   * @param  name the location of the image, relative to the url argument
+   * @return      the image at the specified URL
+   * @see         Image
+   */
+
   private void revokeAllUserTokens(User user) {
     var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getId());
     if (validUserTokens.isEmpty())
@@ -89,6 +153,22 @@ public class AuthenticationService {
     });
     tokenRepository.saveAll(validUserTokens);
   }
+
+  /**
+   * Returns an Image object that can then be painted on the screen.
+   * The url argument must specify an absolute <a href="#{@link}">{@link URL}</a>. The name
+   * argument is a specifier that is relative to the url argument.
+   * <p>
+   * This method always returns immediately, whether or not the
+   * image exists. When this applet attempts to draw the image on
+   * the screen, the data will be loaded. The graphics primitives
+   * that draw the image will incrementally paint on the screen.
+   *
+   * @param  url  an absolute URL giving the base location of the image
+   * @param  name the location of the image, relative to the url argument
+   * @return      the image at the specified URL
+   * @see         Image
+   */
 
   public void refreshToken(
           HttpServletRequest request,
