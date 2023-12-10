@@ -1,0 +1,6 @@
+<!--/* Header fragment */-->
+<div th:fragment="header(breadcrumb)">
+  <ol class="breadcrumb container" th:replace="${breadcrumb}">
+    <li><a href="#">Home</a></li>
+  </ol>
+</div>
