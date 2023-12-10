@@ -29,6 +29,9 @@ import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpMethod.PUT;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
+/**
+ * Security configuration class - Used to add JWT filter.
+ */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -50,6 +53,12 @@ public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
     private final LogoutHandler logoutHandler;
 
+    /**
+     * Spring security look it first
+     * @param http
+     * @return
+     * @throws Exception
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -65,7 +74,13 @@ public class SecurityConfiguration {
                                 .anyRequest()
                                 .authenticated()
                 )
+                /**
+                 * Every request should be authenticated. Spring will create new session for each request.
+                 */
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+                /**
+                 *
+                 */
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .logout(logout ->

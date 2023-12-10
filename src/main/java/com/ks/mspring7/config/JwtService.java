@@ -29,15 +29,33 @@ public class JwtService {
     return extractClaim(token, Claims::getSubject);
   }
 
+  /**
+   * Extract Claim Information passed via JWT
+   * @param token
+   * @param claimsResolver
+   * @return
+   * @param <T>
+   */
   public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
     final Claims claims = extractAllClaims(token);
     return claimsResolver.apply(claims);
   }
 
+  /**
+   * Generate Token with userDetails
+   * @param userDetails
+   * @return
+   */
   public String generateToken(UserDetails userDetails) {
     return generateToken(new HashMap<>(), userDetails);
   }
 
+  /**
+   * Generate Token with claimDetails and userDetails
+   * @param extraClaims
+   * @param userDetails
+   * @return
+   */
   public String generateToken(
       Map<String, Object> extraClaims,
       UserDetails userDetails
@@ -79,6 +97,11 @@ public class JwtService {
     return extractClaim(token, Claims::getExpiration);
   }
 
+  /**
+   * Extract All Claims details from JWT Token
+   * @param token
+   * @return
+   */
   private Claims extractAllClaims(String token) {
     return Jwts
         .parserBuilder()
