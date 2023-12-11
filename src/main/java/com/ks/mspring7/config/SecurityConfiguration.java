@@ -4,14 +4,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.web.cors.CorsUtils;
 
 import static com.ks.mspring7.user.Permission.ADMIN_CREATE;
 import static com.ks.mspring7.user.Permission.ADMIN_DELETE;
@@ -33,7 +36,7 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
  * Security configuration class - Used to add JWT filter.
  */
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity //(debug = true)
 @RequiredArgsConstructor
 @EnableMethodSecurity
 public class SecurityConfiguration {
@@ -48,7 +51,12 @@ public class SecurityConfiguration {
             "/configuration/security",
             "/swagger-ui/**",
             "/webjars/**",
-            "/swagger-ui.html"};
+            "/swagger-ui.html",
+            "/web/v1",
+            "/web/ks/**",
+    "/web/v1/login", "/web/v1/loginCheck",
+    };
+
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
     private final LogoutHandler logoutHandler;
@@ -62,8 +70,12 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
+                       /* req.requestMatchers("/**")
+                                .permitAll()
+                        */
                         req.requestMatchers(WHITE_LIST_URL)
                                 .permitAll()
                                 .requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), MANAGER.name())
@@ -73,6 +85,12 @@ public class SecurityConfiguration {
                                 .requestMatchers(DELETE, "/api/v1/management/**").hasAnyAuthority(ADMIN_DELETE.name(), MANAGER_DELETE.name())
                                 .anyRequest()
                                 .authenticated()
+                )
+                .formLogin((formLogin) -> formLogin.loginPage("/web/v1/login")
+                 //       .failureUrl("/web/v1/login-error")
+                        .loginProcessingUrl("/web/v1/loginCheck")
+                        .successForwardUrl("/web/v1/welcome")
+                        .permitAll()
                 )
                 /**
                  * Every request should be authenticated. Spring will create new session for each request.
@@ -92,4 +110,14 @@ public class SecurityConfiguration {
 
         return http.build();
     }
+/*
+// COde with error
+    @Bean
+    public SecurityFilterChain securityFilterChain(WebSecurity web) throws Exception {
+        web.ignoring().requestMatchers(CorsUtils::isPreFlightRequest)
+                .requestMatchers("/webjars/**")
+                .anyRequest();
+        return (SecurityFilterChain) web.build();
+    }
+ */
 }

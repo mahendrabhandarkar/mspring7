@@ -19,6 +19,8 @@ public class Mspring7Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Mspring7Application.class, args);
 	}
+
+	/*
 	@Bean
 	public CommandLineRunner commandLineRunner(
 			AuthenticationService service
@@ -44,4 +46,5 @@ public class Mspring7Application {
 
 		};
 	}
+	 */
 }

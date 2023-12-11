@@ -82,22 +82,39 @@ public class AuthenticationService {
    */
 
   public AuthenticationResponse authenticate(AuthenticationRequest request) {
+    AuthenticationResponse returnval = null;
+    try {
+    System.out.println("I am here");
+
     authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(
             request.getEmail(),
             request.getPassword()
         )
     );
+    System.out.println("I am here 3");
     var user = repository.findByEmail(request.getEmail())
-        .orElseThrow();
+              .orElseThrow();
+
+ //   System.out.println("0000:"+user.toString());
     var jwtToken = jwtService.generateToken(user);
+    System.out.println("aaa:"+jwtToken.toString());
     var refreshToken = jwtService.generateRefreshToken(user);
+    System.out.println("bbb:"+refreshToken.toString());
     revokeAllUserTokens(user);
+    System.out.println("Revoke statement");
     saveUserToken(user, jwtToken);
-    return AuthenticationResponse.builder()
+    System.out.println("Save all statement");
+
+    returnval= AuthenticationResponse.builder()
         .accessToken(jwtToken)
             .refreshToken(refreshToken)
         .build();
+
+    }catch(Throwable th) {
+      th.printStackTrace();
+    }
+return returnval;
   }
 
   /**
@@ -182,6 +199,7 @@ public class AuthenticationService {
     }
     refreshToken = authHeader.substring(7);
     userEmail = jwtService.extractUsername(refreshToken);
+
     if (userEmail != null) {
       var user = this.repository.findByEmail(userEmail)
               .orElseThrow();
