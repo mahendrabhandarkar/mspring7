@@ -15,6 +15,9 @@ Perl Modules Installation without Internet Connection:--- https://www.ibm.com/do
 | RTM | | |
 |COCOMO (Constructive Cost Model) | Youtube | is a widely used model that estimates the effort, time, and cost associated with software development projects.|
 | upstream and downstream systems in Java |  | like TIBCO for CRM, RabbitMQ for Java, etc|
+|Configuring SMS Two-Factor Authentication with 3rd Party SMS Provider| https://community.fortinet.com/t5/FortiGate/Technical-Tip-Configuring-SMS-Two-Factor-Authentication-with-3rd/ta-p/196455 | |
+| Enable/Disable feature and RBAC access prevention | | |
+| Override once per request filter. | https://www.baeldung.com/spring-onceperrequestfilter | |
 
 
 Gson gson = new GsonBuilder().serializeNulls().create(); <br />
