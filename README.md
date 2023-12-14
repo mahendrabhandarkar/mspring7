@@ -14,6 +14,8 @@ Perl Modules Installation without Internet Connection:--- https://www.ibm.com/do
 | postgres or mongodb database restore | | |
 | RTM | | |
 |COCOMO (Constructive Cost Model) | Youtube | is a widely used model that estimates the effort, time, and cost associated with software development projects.|
+| upstream and downstream systems in Java |  | like TIBCO for CRM, RabbitMQ for Java, etc|
+
 
 Gson gson = new GsonBuilder().serializeNulls().create(); <br />
 https://github.com/admirhodzic/multiselect-dropdown <br />
