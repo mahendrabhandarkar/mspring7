@@ -8,12 +8,12 @@ Perl Modules Installation without Internet Connection:--- https://www.ibm.com/do
 | Validation | https://jqueryvalidation.org/ | |
 | jQuery Steps | http://www.jquery-steps.com/ | |
 | sweet alert | https://sweetalert.js.org/guides/ | |
-| Bootstrap Multiselect | |
-| jsPDF |  |
-| gitlab restore backup | |
-| postgres or mongodb database restore | |
-| RTM | |
-|COCOMO (Constructive Cost Model) | is a widely used model that estimates the effort, time, and cost associated with software development projects.|
+| Bootstrap Multiselect | | |
+| jsPDF |  | |
+| gitlab restore backup | | |
+| postgres or mongodb database restore | | |
+| RTM | | |
+|COCOMO (Constructive Cost Model) | | is a widely used model that estimates the effort, time, and cost associated with software development projects.|
 
 Gson gson = new GsonBuilder().serializeNulls().create(); <br />
 https://github.com/admirhodzic/multiselect-dropdown <br />
