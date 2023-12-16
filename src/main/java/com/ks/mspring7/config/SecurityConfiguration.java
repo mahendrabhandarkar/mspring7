@@ -11,6 +11,9 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
@@ -88,8 +91,8 @@ public class SecurityConfiguration {
                 )
                 .formLogin((formLogin) -> formLogin.loginPage("/web/v1/login")
                  //       .failureUrl("/web/v1/login-error")
-                        .loginProcessingUrl("/web/v1/loginCheck")
-                        .successForwardUrl("/web/v1/welcome")
+                //        .loginProcessingUrl("/web/v1/loginCheck")
+                //        .successForwardUrl("/web/v1/welcome")
                         .permitAll()
                 )
                 /**
@@ -118,6 +121,13 @@ public class SecurityConfiguration {
                 .requestMatchers("/webjars/**")
                 .anyRequest();
         return (SecurityFilterChain) web.build();
+    }
+ */
+/*
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+      //  return new BCryptPasswordEncoder();
     }
  */
 }
