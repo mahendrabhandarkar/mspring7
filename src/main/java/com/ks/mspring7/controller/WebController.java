@@ -1,5 +1,6 @@
 package com.ks.mspring7.controller;
 
+import com.ks.mspring7.service.WebLoginService;
 import com.ks.mspring7.user.User;
 import com.ks.mspring7.user.UserRepository;
 import io.swagger.v3.oas.annotations.Hidden;
@@ -25,6 +26,8 @@ public class WebController {
 
     private static final Logger log = LoggerFactory.getLogger(UserRepository.class);
 
+    @Autowired
+    public WebLoginService webLoginService;
 
     @GetMapping
     public String get() {
@@ -50,10 +53,18 @@ public class WebController {
     public String login() { return "ks/login"; }
 
     @PostMapping("/loginCheck")
+    @ResponseBody
     public String loginCheck(@RequestParam("email") String userEmail, @RequestParam("password") String userPass) {
         log.debug("Tester");
         log.debug(userEmail);
         log.debug(userPass);
+        /*
+        if(webLoginService.isValidLogin(userEmail, userPass, "")) {
+
+        }
+         */
+        System.out.println("userEmail:" + userEmail );
+        System.out.println(webLoginService.isValidLogin(userEmail, userPass, ""));
 /*
         User user = repository.findByEmail(userEmail).orElseThrow();
         UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
