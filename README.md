@@ -19,7 +19,7 @@ Perl Modules Installation without Internet Connection:--- https://www.ibm.com/do
 | Enable/Disable feature and RBAC access prevention | | |
 | Override once per request filter. | https://www.baeldung.com/spring-onceperrequestfilter | |
 | JPA Inheritance Strategies | | @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS) |
-| Spring boot Documentation PDF |  |  |
+| Spring boot Documentation PDF |  | https://docs.spring.io/spring-boot/docs/current/reference/pdf/spring-boot-reference.pdf |
 | Spring Cloud Kubernetes , Resilience4J | | |
 
 Gson gson = new GsonBuilder().serializeNulls().create(); <br />
