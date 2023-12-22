@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
 	layout:decorate="~{layouts/layouttemp}">
 <head>
 <title>Springboot Rocks</title>
@@ -19,7 +20,12 @@
 				</ol>
 			</div>
 			
-			<h4 th:text="#{welcome.text}"></h4>
+			<h4 th:text="#{welcome.text}">
+				<div sec:authorize="isAuthenticated()">
+					Authenticated as <span sec:authentication="name"></span>
+				</div>
+
+			</h4>
 
 			<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
 				<a class="nav-item nav-link active" id="nav-home-tab"

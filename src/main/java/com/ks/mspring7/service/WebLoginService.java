@@ -2,6 +2,7 @@ package com.ks.mspring7.service;
 
 import com.google.gson.Gson;
 import com.ks.mspring7.proxy.GenericRestClient;
+import org.apache.commons.collections4.MultiValuedMap;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -40,44 +42,49 @@ public class WebLoginService extends BaseService{
     @Autowired
     private GenericRestClient genericClient;
 
-    public Object isValidLogin(String username, String userPass, String token) {
+    public Boolean isValidLogin(String username, String userPass, String token) {
         Boolean returnval = false;
 
-        // api/v1/auth/register -- This is used for register
-        HashMap<String, String> requestBody1 = new HashMap<>();
-        requestBody1.put("firstname", "ADMIN");
-        requestBody1.put("lastname", "Admin");
-        requestBody1.put("email", "admin@mail.com");
-        requestBody1.put("password", "admin");
-        requestBody1.put("role", "ADMIN");
-        HashMap<String, String> headersAsMap = new HashMap<>();
-        headersAsMap.put("Authorization","Bearer auth-token");
-        headersAsMap.put("User-Agent","Web");
-        LinkedMultiValueMap mvmap = new LinkedMultiValueMap<>(headersAsMap);
-        Consumer<HttpHeaders> consumer = it -> it.addAll(mvmap);
-        String response1 = String.valueOf(genericClient.post(webClient, "/api/v1/auth/register",requestBody1, HashMap.class, consumer));
-        System.out.println(response1);
-        JsonElement jsonElement = JsonParser.parseString(response1);
-        JsonObject jsonObject = jsonElement.getAsJsonObject();
-        String accessToken = jsonObject.get("access_token").getAsString();
+        try {
+            // api/v1/auth/register -- This is used for register
+            HashMap<String, String> requestBody1 = new HashMap<>();
+            requestBody1.put("firstname", "ADMIN");
+            requestBody1.put("lastname", "Admin");
+            requestBody1.put("email", "admin@mail.com");
+            requestBody1.put("password", "admin");
+            requestBody1.put("role", "ADMIN");
+            //    MultiValueMap mvmap = new MultiValuedHashMap<String, String>(headersAsMap);
+            Consumer<HttpHeaders> consumer = httpHeaders -> {
+                httpHeaders.add("Authorization", "Bearer auth-token");
+                httpHeaders.add("User-Agent", "Web");
+            };
+            String response1 = String.valueOf(genericClient.post(webClient, "/api/v1/auth/register", requestBody1, HashMap.class, consumer));
+            System.out.println("TTTTT: " + response1);
+            JsonElement jsonElement = JsonParser.parseString(response1);
+            JsonObject jsonObject = jsonElement.getAsJsonObject();
+            String accessToken = jsonObject.get("access_token").getAsString();
 
-        //   JsonObject jsonObject = new Gson().fromJson(json, JsonObject.class);
+            //   JsonObject jsonObject = new Gson().fromJson(json, JsonObject.class);
+            System.out.println("Second Statement Started");
+            //    localhost:8081/api/v1/auth/authenticate
+            HashMap<String, String> requestBody2 = new HashMap<>();
+            requestBody2.put("email", "admin@mail.com");
+            requestBody2.put("password", "admin");
+            Consumer<HttpHeaders> consumer2 = httpHeaders -> {
+                httpHeaders.add("Authorization", "Bearer " + accessToken.toString());
+                httpHeaders.add("User-Agent", "Web");
+            };
+            String response2 = String.valueOf(genericClient.post(webClient, "/api/v1/auth/authenticate", requestBody2, HashMap.class, consumer2));
+            System.out.println(response2);
+            JsonElement jsonElement2 = JsonParser.parseString(response2);
+            JsonObject jsonObject2 = jsonElement2.getAsJsonObject();
 
-        //    localhost:8081/api/v1/auth/authenticate
-        HashMap<String, String> requestBody2 = new HashMap<>();
-        requestBody2.put("email", "admin@mail.com");
-        requestBody2.put("password", "admin");
-        HashMap<String, String> headersAsMap2 = new HashMap<>();
-        headersAsMap.put("Authorization","Bearer "+accessToken.toString());
-        headersAsMap.put("User-Agent","Web");
-        LinkedMultiValueMap mvmap2 = new LinkedMultiValueMap<>(headersAsMap2);
-        Consumer<HttpHeaders> consumer2 = it -> it.addAll(mvmap2);
-        String response2 = String.valueOf(genericClient.post(webClient, "/api/v1/auth/authenticate",requestBody2, HashMap.class, consumer2));
-        System.out.println(response2);
-        JsonElement jsonElement2 = JsonParser.parseString(response2);
-        JsonObject jsonObject2 = jsonElement2.getAsJsonObject();
+            //    refresh-token -- first
+            // Principal -- we will use to fetch record from security.
+            // Need to set session object after successful login
 
-        //    refresh-token -- first
+            // Create a new session
+
         /*
         HashMap<String, String> restest = webClient.post().uri("/api/v1/auth/register")
                 .body(BodyInserters.fromValue(requestBody))
@@ -104,8 +111,12 @@ public class WebLoginService extends BaseService{
 
          employeeResponse = employeeMono;
 */
-    //    return returnval;
-        return "abc";
+            //    return returnval;
+            returnval = true;
+        }catch (Exception e) {
+            returnval = false;
+        }
+        return returnval;
     }
 
 }
