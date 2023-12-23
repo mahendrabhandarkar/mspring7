@@ -80,14 +80,14 @@ public class WebController {
  //   @preAuthorize("hasAuthority('employee:write')")
     public String welcome(){
     //    System.out.println("Session Username:" + session.getAttribute("username"));
-    //    System.out.println("Currently Logged in User:" + SecurityContextHolder.getContext().getAuthentication().getName());
-    //    System.out.println(SecurityContextHolder.getContext().toString());
+        System.out.println("Currently Logged in User:" + SecurityContextHolder.getContext().getAuthentication().getName());
+        System.out.println(SecurityContextHolder.getContext().toString());
         return "ks/index2";
     }
 
     @RequestMapping("/accessdenied")
     public ModelAndView accessdenied() {
-        return new ModelAndView("/ks/index");
+        return new ModelAndView("/ks/accessDenied");
     }
 
 }
