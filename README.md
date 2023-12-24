@@ -47,5 +47,5 @@ Pluralsight -- Courses Free --- Yearly ----
 https://www.npmjs.com/package/tabletojson - Convert HTML table input fields content to JSON.
 
 https://www.youtube.com/watch?v=BVdQ3iuovg0 ---  https://aliboucoding.com/p/securing-your-spring-boot-3-0-applications-with-json-web-tokens-jwt 
----- https://github.com/ali-bouali/spring-boot-3-jwt-security
-
+---- https://github.com/ali-bouali/spring-boot-3-jwt-security <br />
+CLAUDE 2 AI API -- Alternative of chatgpt.
