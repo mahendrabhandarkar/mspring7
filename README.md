@@ -21,6 +21,8 @@ Perl Modules Installation without Internet Connection:--- https://www.ibm.com/do
 | JPA Inheritance Strategies | | @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS) |
 | Spring boot Documentation PDF |  | https://docs.spring.io/spring-boot/docs/current/reference/pdf/spring-boot-reference.pdf |
 | Spring Cloud Kubernetes , Resilience4J | | |
+| JOOQ | | |
+| RestClient | | |
 
 Gson gson = new GsonBuilder().serializeNulls().create(); <br />
 https://github.com/admirhodzic/multiselect-dropdown <br />
@@ -48,4 +50,11 @@ https://www.npmjs.com/package/tabletojson - Convert HTML table input fields cont
 
 https://www.youtube.com/watch?v=BVdQ3iuovg0 ---  https://aliboucoding.com/p/securing-your-spring-boot-3-0-applications-with-json-web-tokens-jwt 
 ---- https://github.com/ali-bouali/spring-boot-3-jwt-security <br />
-CLAUDE 2 AI API -- Alternative of chatgpt.
+CLAUDE 2 AI API -- Alternative of chatgpt.<br />
+expo – mobile hosting testing server like Heroku for web.<br />
+docker-desktop <br />
+Installing Chocolatey <br />
+Vagrant <br />
+VirtualBox <br />
+WSL2 – Install for running linux on windows.<br />
+Vigrant Cloud for installing applications on machine by using virtualbox.<br />
