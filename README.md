@@ -23,6 +23,7 @@ Perl Modules Installation without Internet Connection:--- https://www.ibm.com/do
 | Spring Cloud Kubernetes , Resilience4J | | |
 | JOOQ | | |
 | RestClient | | |
+| File Upload using Feign Client | | Difference between Netflix Feign and Open Feign |
 
 Gson gson = new GsonBuilder().serializeNulls().create(); <br />
 https://github.com/admirhodzic/multiselect-dropdown <br />
