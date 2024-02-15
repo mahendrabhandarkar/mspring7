@@ -59,3 +59,5 @@ Vagrant <br />
 VirtualBox <br />
 WSL2 – Install for running linux on windows.<br />
 Vigrant Cloud for installing applications on machine by using virtualbox.<br />
+https://www.youtube.com/watch?v=CynidTePOys -- JPASupport plugin Automatically generating JPA Entity classes and Repository<br />
+
