@@ -30,6 +30,7 @@ https://github.com/admirhodzic/multiselect-dropdown <br />
 jspdf - https://artskydj.github.io/jsPDF/docs/jsPDF.html [https://pdfclown.org/ , iText] <br />
 RichText - TinyMCE https://github.com/tinymce/tinymce <br />
 DataTable Plugins - https://datatables.net/plug-ins/i18n/ <br />
+codemirror -- CodeMirror is a code editor component for the web. <br />
 
 https://developer.mozilla.org/en-US/docs/Web/API/Element
 https://stackoverflow.com/questions/25098573/how-to-call-parent-window-function-from-child-window-jquery
